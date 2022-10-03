@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /old*
+Allow: /
+
+Sitemap: https://horseflyanalytics.com/sitemap.xml
+Sitemap: https://horseflyanalytics.com/sitemap-blog.xml
+Sitemap: https://horseflyanalytics.com/sitemap-info.xml
