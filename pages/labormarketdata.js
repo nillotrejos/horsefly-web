@@ -8,10 +8,12 @@ import WhoCanBenefits from "../components/TalentAnalyticsComponents/WhoCanBenefi
 import UsesLaborData from "../components/LaborInsightsComponents/UsesLaborData";
 import FindLaborDataa from "../components/LaborInsightsComponents/FindLaborData";
 import Banner from "../components/LaborMarketAnalyticsComponents/Banner";
+import NextSEO from '../components/NextSEO';
 
-export default function LaborMarketData({TopHeaderData,MarketInsights,BannerJSON,LaborInsightsData,WhoNeedsInsights,UsesLabordata,FindLaborDatas,ContactBanner}) {
+export default function LaborMarketData({MetaTags,path,QuestionAnswer,TopHeaderData,MarketInsights,BannerJSON,LaborInsightsData,WhoNeedsInsights,UsesLabordata,FindLaborDatas,ContactBanner}) {
   return (
     <main>
+     <NextSEO MetaTags={MetaTags} QuestionAnswer={QuestionAnswer} path={path} />
       <TopHeader data={TopHeaderData} />
       <HowHorsefly data={MarketInsights} />
       <RichText data={BannerJSON} />
@@ -51,7 +53,12 @@ export async function getStaticProps() {
         data: response.laborInsights.usesOfLaborMarketData.laborMarketDataCollection.items
       },
       FindLaborDatas: response.laborInsights.findLaborMarketData,
-      ContactBanner: response.laborInsights.contactHorseflyBanner
+      ContactBanner: response.laborInsights.contactHorseflyBanner,
+      MetaTags: {
+        title: response.laborInsights.metaTags.title,
+        data: response.laborInsights.metaTags.metaTagsCollection.items
+      },
+      QuestionAnswer: response.laborInsights.schemaQuestionAnswerCollection.items
     },
     revalidate: 5, 
   }

@@ -56,5 +56,21 @@ export const HomePageQuery = `query homePageEntryQuery {
         buttonName
         buttonUrl
       }
+      metaTag{
+        title
+        metaTagsCollection{
+          items{
+            name
+            content
+            mataTagFor
+          }
+        }
+      }
+      schemaQuestionAnswerCollection{
+        items{
+          question
+          answer
+        }
+      }
     }
   }`

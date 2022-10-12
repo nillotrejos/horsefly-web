@@ -6,10 +6,12 @@ import IncreaseDiversity from "../components/DiversityComponents/IncreaseDiversi
 import KeyInnovation from "../components/DiversityComponents/KeyInnovation";
 import BannerSection from "../components/DiversityComponents/BannerSection";
 import EthnicityData from "../components/DiversityComponents/EthnicityData";
+import NextSEO from '../components/NextSEO';
  
-export default function DiversityData({TopBannerData,Info,IncreaseDiversityData,KeysData,Section,ethencity}) {
+export default function DiversityData({MetaTags,path,QuestionAnswer,TopBannerData,Info,IncreaseDiversityData,KeysData,Section,ethencity}) {
   return (
     <main>
+      <NextSEO MetaTags={MetaTags} QuestionAnswer={QuestionAnswer} path={path} />
       <Header data={TopBannerData} />
       <BannerInfo data={Info} />
       <IncreaseDiversity data={IncreaseDiversityData} />
@@ -38,7 +40,12 @@ export async function getStaticProps() {
       title: response.diversityDataPage.ethnicityDiversitySection.title,
       description: response.diversityDataPage.ethnicityDiversitySection.description,
       data: response.diversityDataPage.ethnicityDiversitySection.steamlineItemsCollection.items
-    }
+    },
+    MetaTags: {
+      title: response.diversityDataPage.metaTags.title,
+      data: response.diversityDataPage.metaTags.metaTagsCollection.items
+    },
+    QuestionAnswer: response.diversityDataPage.schemaQuestionAnswerCollection.items
     },
     revalidate: 5, 
   }

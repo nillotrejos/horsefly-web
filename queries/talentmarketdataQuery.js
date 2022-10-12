@@ -58,5 +58,21 @@ export const TalentMarketDataQuery = `query talentMarketDataPageEntryQuery {
         buttonTitle
         buttonUrl
       }
+      metaTags{
+        title
+        metaTagsCollection{
+          items{
+            name
+            content
+            mataTagFor
+          }
+        }
+      }
+        schemaQuestionAnswerCollection{
+          items{
+            question
+            answer
+          }
+        }
     }
   }`

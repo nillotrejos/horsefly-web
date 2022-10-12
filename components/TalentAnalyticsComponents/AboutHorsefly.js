@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactHtmlParser from 'react-html-parser';
-import Link from "next/link";
 
 const AboutHorsefly = ({data}) => {
   return (

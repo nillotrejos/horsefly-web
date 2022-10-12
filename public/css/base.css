@@ -6,7 +6,6 @@
  * Icon Font
  */
 
-
 @font-face {
   font-family: "icons";
   /* src: url('../fonts/icons/icons.woff?umk439') format('woff'); */
@@ -14,6 +13,18 @@
   font-weight: normal;
   font-style: normal;
   font-display: swap;
+}
+.spa > ol > li > p {
+  width: calc(100% - 20px) !important;
+}
+.slick-prev:before, .slick-next:before{
+  color: #3470ac !important;
+  font-size: 35px !important;
+  position: absolute !important;
+  left: -7px !important;
+}
+.slick-slide img{
+  height: 650px !important;
 }
 a{
   color: #3470ac;
@@ -1288,8 +1299,8 @@ section.video {
  * ==================== */
 
 .row.faqs {
-  max-width: 620px;
-  margin-top: 40px;
+  max-width: 780px !important;
+  margin-top: 40px;  
 }
 
 .row.faqs > .item {

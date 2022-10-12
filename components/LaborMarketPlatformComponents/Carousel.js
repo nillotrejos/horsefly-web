@@ -1,6 +1,7 @@
 import React from 'react'
 import Slider from "react-slick";
 
+
 const settings = {
     dots: true,
     className: "center",
@@ -10,6 +11,7 @@ const settings = {
     slidesToShow: 1,
     speed: 500,
     adaptiveHeight: true,
+    
   };
 
 const Carousel = ({data}) => {

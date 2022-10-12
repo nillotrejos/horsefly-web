@@ -7,10 +7,12 @@ import Questions from "../components/LabourDatabaseComponents/Questions";
 import ExploreOurData from "../components/LabourDatabaseComponents/ExploreOurData";
 import Blogs from "../components/HomeComponents/Blogs";
 import GetStarted from "../components/LabourDatabaseComponents/GetStarted";
+import NextSEO from '../components/NextSEO';
 
-export default function LaborDatabase({BannerCollection,blogs,ExploreOur,GetStartedBanner,Question,talentdata,TopHeader}) { 
+export default function LaborDatabase({MetaTags,FAQSchema,BannerCollection,blogs,ExploreOur,GetStartedBanner,Question,talentdata,TopHeader,path}) {
   return (
     <main>
+     <NextSEO MetaTags={MetaTags} QuestionAnswer={FAQSchema} path={path} />
       <Header data={TopHeader} />
       <HorseflyBanner data={BannerCollection} />
       <TalentData datas={talentdata} />
@@ -24,7 +26,7 @@ export default function LaborDatabase({BannerCollection,blogs,ExploreOur,GetStar
 
 
 export async function getStaticProps() {
-  const response = await fetchContent(WhyHorseflyQuert);
+  const response = await fetchContent(WhyHorseflyQuert); 
   return {
     props: {
       BannerCollection: response.whyHorsefly.bannerData,
@@ -41,7 +43,12 @@ export async function getStaticProps() {
         description: response.whyHorsefly.talentDataRef.description,
         data: response.whyHorsefly.talentDataRef.talentDataRefCollection.items
       },
-      TopHeader:response.whyHorsefly.topBanner
+      TopHeader:response.whyHorsefly.topBanner,
+      MetaTags: {
+        title: response.whyHorsefly.metaTags.title,
+        data: response.whyHorsefly.metaTags.metaTagsCollection.items
+      },
+      FAQSchema: response.whyHorsefly.faqSchemaQuestionsanswerCollection.items
      
     },
     revalidate: 5, 

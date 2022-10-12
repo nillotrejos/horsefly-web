@@ -61,5 +61,21 @@ export const WorkForcePageQuery = `query workForcePlaningDataPageEntryQuery {
         buttonTitle
         buttonUrl
       }
+      metaTags{
+        title
+        metaTagsCollection{
+          items{
+            name
+            content
+            mataTagFor
+          }
+        }
+      }
+      faqSchemaCollection{
+        items{
+          question
+          answer
+        }
+      }
     }
   }`

@@ -59,5 +59,21 @@ export const BusinessPageQuery= `query businessPlanningPageEntryQuery {
         buttonTitle
         buttonUrl
       }
+      metaTags{
+        title
+        metaTagsCollection{
+          items{
+            name
+            content
+            mataTagFor
+          }
+        }
+      }
+      schemaQuestionAnswerCollection{
+        items{
+          question
+          answer
+        }
+      }
     }
   }`

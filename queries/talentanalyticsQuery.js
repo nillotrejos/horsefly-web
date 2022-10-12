@@ -78,16 +78,34 @@ export const TalentAnalyticsQuery = `query talentAnalyticsPageEntryQuery {
         description
       }
       faqTitle
-    faqsCollection{
-      items{
-        question
-        answer
-      }
-    }
       contactHorseflyBanner{
         title
         buttonName
         buttonUrl
+      }
+      metaTags{
+        title
+        metaTagsCollection{
+          items{
+            name
+            content
+            mataTagFor
+          }
+        }
+      }
+      schemaQuestionAnswerCollection{
+        items{
+          question
+          answer
+        }
+      }
+      faqsCollection{
+        items{
+          question
+          faqAnswer{
+            json
+          }
+        }
       }
     }
   }`

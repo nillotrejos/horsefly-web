@@ -69,5 +69,21 @@ export const RPOPageQuery = `query rpoRecruitmentPageEntryQuery {
         title
         description
       }
+      metaTags{
+        title
+        metaTagsCollection{
+          items{
+            name
+            content
+            mataTagFor
+          }
+        }
+      }
+        schemaQuestionAnswerCollection{
+          items{
+            question
+            answer
+          }
+        }
     }
   }`

@@ -6,10 +6,12 @@ import TopReasons from "../components/WorkForcePlanningDataComponents/TopReasons
 import AccurateWorkforce from "../components/WorkForcePlanningDataComponents/AccurateWorkforce";
 import WorkBlogs from "../components/WorkForcePlanningDataComponents/WorkBlog";
 import GetStarted from "../components/LabourDatabaseComponents/GetStarted";
+import NextSEO from '../components/NextSEO';
 
-export default function WorkForcePlanningData({Header,Info,MarketAnalyticsBanner,Reasons,MarketData,Blog,Banner}) {
+export default function WorkForcePlanningData({QuestionAnswer,MetaTags,path,Header,Info,MarketAnalyticsBanner,Reasons,MarketData,Blog,Banner}) {
   return (
     <main>
+      <NextSEO MetaTags={MetaTags} QuestionAnswer={QuestionAnswer} path={path} />
       <Headers data={Header} />
       <BannerSec data={MarketAnalyticsBanner} info={Info} />
       <TopReasons data={Reasons} />
@@ -36,7 +38,12 @@ export async function getStaticProps() {
       },
       MarketData: response.workForcePlaningDataPage.laborMarketDataAnalytics,
       Blog: response.workForcePlaningDataPage.blogsCollection.items,
-      Banner: response.workForcePlaningDataPage.getStarted
+      Banner: response.workForcePlaningDataPage.getStarted,
+      MetaTags: {
+        title: response.workForcePlaningDataPage.metaTags.title,
+        data: response.workForcePlaningDataPage.metaTags.metaTagsCollection.items
+      },
+      QuestionAnswer: response.workForcePlaningDataPage.faqSchemaCollection.items
     },
     revalidate: 5, 
   }

@@ -1,5 +1,4 @@
 import React from 'react'
-
 function Video({id}) {
   return (
     <section className="video">
@@ -8,7 +7,7 @@ function Video({id}) {
             <lite-youtube
               videoid={id}
               style={{
-                backgroundImage: "/webp/homepage/horsefly-video-thumbnail.webp",
+                backgroundImage: `url("/webp/homepage/horsefly-video-thumbnail.webp")`
               }}
             >
               <button type="button" className="lty-playbtn">
