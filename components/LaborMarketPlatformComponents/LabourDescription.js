@@ -3,7 +3,6 @@ import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 const LabourDescription = ({info}) => {
-
   const Heading = ({ children }) => <h2 className="mw-960 ahc">{children}</h2>;
   const Heading2 = ({ children }) => <h3 className="mw-960 ahc">{children}</h3>;
   const Text = ({ children }) =>  <p className="mw-960 ahc">{children}</p>;

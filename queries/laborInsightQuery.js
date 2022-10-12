@@ -70,5 +70,21 @@ export const LaborInsightsQuery = `query laborInsightsEntryQuery {
         buttonName
         buttonUrl
       }
+      metaTags{
+        title
+        metaTagsCollection{
+          items{
+            name
+            content
+            mataTagFor
+          }
+        }
+      }
+        schemaQuestionAnswerCollection{
+          items{
+            question
+            answer
+          }
+        }
     }
   }`

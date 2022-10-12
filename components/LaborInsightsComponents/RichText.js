@@ -5,7 +5,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 const RichText = ({data}) => {
     const Heading = ({ children }) => <h2 className="mw-960 ahc">{children}</h2>;
     const Text = ({ children }) =>  <p className="mw-960 ahl">{children}</p>;
-    const Ul = ({ children }) =>  <ul className="mw-960 mh-n-md">{children}</ul>;
+    const Ul = ({ children }) =>  <ul className="mw-960 mh-n-md">{children}</ul>; 
 
     const options = {
         renderNode: {

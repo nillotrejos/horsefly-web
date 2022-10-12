@@ -7,11 +7,13 @@ import Tools from "../components/TalentAcquisitionComponents/Tools";
 import AcquisitionAnalytics from "../components/TalentAcquisitionComponents/AcquisitionAnalytics";
 import WorkBlogs from "../components/WorkForcePlanningDataComponents/WorkBlog";
 import GetStartedHubspot from "../components/TalentAcquisitionComponents/GetStartedHubspot";
+import NextSEO from '../components/NextSEO';
 
 
-export default function TalentAcquisitionPlatform({TopBanner,Banner,StreamlineData,AnalyticsData,Blog,Getstarted,ToolsDataobj}) {
+export default function TalentAcquisitionPlatform({MetaTags,path,QuestionAnswer,TopBanner,Banner,StreamlineData,AnalyticsData,Blog,Getstarted,ToolsDataobj}) {
   return (
     <main>
+      <NextSEO MetaTags={MetaTags} QuestionAnswer={QuestionAnswer} path={path} />
       <Header data={TopBanner} />
       <TalentBanner data={Banner} />
       <SteamLine data={StreamlineData} />
@@ -38,7 +40,13 @@ export async function getStaticProps() {
       },
       AnalyticsData: response.talentAcquisitionPlatform.alentAcquisitionAnalytics,
       Blog: response.talentAcquisitionPlatform.blogsCollection.items,
-      Getstarted: response.talentAcquisitionPlatform.getStartedBanner
+      Getstarted: response.talentAcquisitionPlatform.getStartedBanner,
+      MetaTags: {
+        title: response.talentAcquisitionPlatform.metaTags.title,
+        data: response.talentAcquisitionPlatform.metaTags.metaTagsCollection.items
+      },
+      QuestionAnswer: response.talentAcquisitionPlatform.faqSchemaQuestionsanswerCollection.items
+
     },
     revalidate: 5, 
   }

@@ -7,11 +7,13 @@ import Tools from "../components/TalentAcquisitionComponents/Tools";
 import Explore from "../components/BusinessData/Explore";
 import Blogs from "../components/HomeComponents/Blogs";
 import GetStarted from "../components/LabourDatabaseComponents/GetStarted";
+import NextSEO from '../components/NextSEO';
 
 
-export default function BusinessPlanningData({TopHeader,BannerData,BusinessData,Diversity,Exploredata,BlogData,GetStartedBanner}) {
+export default function BusinessPlanningData({MetaTags,path,QuestionAnswer,TopHeader,BannerData,BusinessData,Diversity,Exploredata,BlogData,GetStartedBanner}) {
   return (
     <main>
+      <NextSEO MetaTags={MetaTags} QuestionAnswer={QuestionAnswer} path={path} />
       <Header data={TopHeader} />
       <TalentBanner data={BannerData} />
       <BlogsData data={BusinessData} />
@@ -37,7 +39,12 @@ export async function getStaticProps() {
       },
       Exploredata: response.businessPlanningPage.exploreOur,
       BlogData: response.businessPlanningPage.blogsCollection.items,
-      GetStartedBanner: response.businessPlanningPage.getStartedBanner
+      GetStartedBanner: response.businessPlanningPage.getStartedBanner,
+      MetaTags: {
+        title: response.businessPlanningPage.metaTags.title,
+        data: response.businessPlanningPage.metaTags.metaTagsCollection.items
+      },
+      QuestionAnswer: response.businessPlanningPage.schemaQuestionAnswerCollection.items
     },
     revalidate: 5, 
   }

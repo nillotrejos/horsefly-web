@@ -62,5 +62,21 @@ export const WhyHorseflyQuert = `query whyHorseflyEntryQuery {
         buttonUrl
         slug
       }
+      metaTags{
+        title
+        metaTagsCollection{
+          items{
+            name
+            content
+            mataTagFor
+          }
+        }
+      }
+      faqSchemaQuestionsanswerCollection{
+        items{
+          answer
+          question
+        }
+      }
     }
   }`

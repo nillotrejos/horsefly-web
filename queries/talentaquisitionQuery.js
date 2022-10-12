@@ -56,5 +56,21 @@ export const TalentAquisitionQuery = `query talentAcquisitionPlatformEntryQuery 
         title
         description
       }
+      metaTags{
+        title
+        metaTagsCollection{
+          items{
+            name
+            content
+            mataTagFor
+          }
+        }
+      }
+        faqSchemaQuestionsanswerCollection{
+          items{
+            question
+            answer
+          }
+        }
     }
   }`

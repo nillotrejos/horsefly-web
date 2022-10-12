@@ -7,10 +7,12 @@ import { HomePageQuery } from '../queries/hompageQuery'
 import Satistics from "../components/HomeComponents/Satistics";
 import Enterprises from "../components/HomeComponents/Enterprises";
 import Explore from "../components/HomeComponents/Explore";
+import NextSEO from '../components/NextSEO';
 
-export default function Home({HomeBannerData, PartnerLogos, BlogsCollections, statistics, VideoID, TopEnterprises, ExploreBanner }) {
+export default function Home({MetaTags,path,QuestionAnswer,HomeBannerData, PartnerLogos, BlogsCollections, statistics, VideoID, TopEnterprises, ExploreBanner }) {
   return (
     <main>
+      <NextSEO MetaTags={MetaTags} QuestionAnswer={QuestionAnswer} path={path} />
       <TopBanner HomeBannerData={HomeBannerData} />
       <PartnerLogo data={PartnerLogos} />
       <Video id={VideoID} />
@@ -39,7 +41,12 @@ export async function getStaticProps() {
         title: response.homePage.topEnterprisesTitle,
         data: response.homePage.topEnterprisesClientsCollection.items
       },
-      ExploreBanner: response.homePage.exploreHorseflyBanner
+      ExploreBanner: response.homePage.exploreHorseflyBanner,
+      MetaTags: {
+        title: response.homePage.metaTag.title,
+        data: response.homePage.metaTag.metaTagsCollection.items
+      },
+      QuestionAnswer: response.homePage.schemaQuestionAnswerCollection.items
     },
     revalidate: 5, 
   }

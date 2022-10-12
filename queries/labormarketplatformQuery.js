@@ -36,5 +36,21 @@ export const LaborMarketPlatformQuery = `query laborMarketPlatformEntryQuery {
         buttonTitle
         buttonUrl
       }
+      metaTags{
+        title
+        metaTagsCollection{
+          items{
+            name
+            content
+            mataTagFor
+          }
+        }
+      }
+      schemaQuestionAnswerCollection{
+        items{
+          question
+           answer
+        }
+      }
     }
   }`

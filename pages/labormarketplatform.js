@@ -5,9 +5,12 @@ import Carousel from "../components/LaborMarketPlatformComponents/Carousel";
 import LabourDescription from "../components/LaborMarketPlatformComponents/LabourDescription";
 import LaborBlogs from "../components/LaborMarketPlatformComponents/LaborBlogs";
 import GetStarted from '../components/LabourDatabaseComponents/GetStarted'
-export default function LaborMarketPlatform({TopBanner,Carousels,Blogs,Banner,info}) {
+import NextSEO from '../components/NextSEO';
+
+export default function LaborMarketPlatform({MetaTags,FAQSchema,TopBanner,Carousels,Blogs,Banner,info,path}) {
   return (
     <main>
+      <NextSEO MetaTags={MetaTags} QuestionAnswer={FAQSchema} path={path} />
       <TopHeader data={TopBanner} />
       <Carousel data={Carousels} />
       <LabourDescription info={info} />
@@ -33,6 +36,11 @@ export async function getStaticProps() {
       },
       Banner: response.laborMarketPlatform.banner,
       info: response.laborMarketPlatform.infoBanner.json,
+      MetaTags: {
+        title: response.laborMarketPlatform.metaTags.title,
+        data: response.laborMarketPlatform.metaTags.metaTagsCollection.items,
+      },
+      FAQSchema: response.laborMarketPlatform.schemaQuestionAnswerCollection.items
     },
     revalidate: 5, 
   }

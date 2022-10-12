@@ -65,5 +65,30 @@ export const LaborMarketAnalyticsQuery= `query laborMarketAnalyticsPageEntryQuer
         buttonName
         buttonUrl
       }
+      metaTags{
+        title
+        metaTagsCollection{
+          items{
+            name
+            content
+            mataTagFor
+          }
+        }
+      }
+        schemaQuestionAnswerCollection{
+          items{
+            question
+            answer
+          }
+        }
+        faqsTitle
+        faqsCollection{
+          items{
+            question
+            faqAnswer{
+              json
+            }
+          }
+        }
     }
   }`

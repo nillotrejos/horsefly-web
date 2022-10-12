@@ -1,6 +1,26 @@
 import React from 'react'
+import { BLOCKS,INLINES } from '@contentful/rich-text-types';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import Link from "next/link";
 
 const FAQ = ({data}) => {
+  const Text = ({ children }) =>  <p>{children}</p>;
+  const OL = ({children}) => <ol style={{marginLeft:'80px'}}>{children}</ol>
+  const options = {
+      renderNode: {
+        [BLOCKS.PARAGRAPH]: (node,children) =>  <Text>{children}</Text>,
+        [BLOCKS.OL_LIST]: (node,children) =>  <OL>{children}</OL>,
+        [INLINES.HYPERLINK]: ({ data }, children) => (
+              <Link
+              href={data.uri}
+              className="link alt"
+              target={`${data.uri ? '_self' : '_blank'}`}
+              rel="nofollow noreferrer noopener"
+              ><a className="link alt">{children}</a></Link>
+          )
+      },
+      renderText: text => text,
+    };
   return (
     <section className="features">
         <div className="wrap">
@@ -24,9 +44,7 @@ const FAQ = ({data}) => {
 
                 <div className="text">
                   <h3>Answer</h3>
-                  <p>
-                    {el.answer}
-                  </p>
+                  {documentToReactComponents(el.faqAnswer.json,options)}
                 </div>
               </div>
             </div>

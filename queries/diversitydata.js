@@ -45,5 +45,21 @@ export const DiversityDataQuery = `query diversityDataPageEntryQuery {
           }
         }
       }
+      metaTags{
+        title
+        metaTagsCollection{
+          items{
+            name
+            content
+            mataTagFor
+          }
+        }
+      }
+        schemaQuestionAnswerCollection{
+          items{
+             question
+            answer
+          }
+        }
     }
   }`

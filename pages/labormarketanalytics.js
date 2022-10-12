@@ -8,9 +8,12 @@ import MarketTools from "../components/LaborMarketAnalyticsComponents/MarketTool
 import MarketData from "../components/LaborMarketAnalyticsComponents/MarketData";
 import FindLaborData from "../components/LaborMarketAnalyticsComponents/FindLaborData";
 import Banner from "../components/LaborMarketAnalyticsComponents/Banner";
-export default function LabourMarketAnalytics({TopBannerData,BannerData,NotesData,MarketProvides,LaborMarketTool,UseOFLaborMarket,FindLaborMarketData,Contact}) {
+import NextSEO from '../components/NextSEO';
+import FAQS from '../components/LaborMarketAnalyticsComponents/FAQ';
+export default function LabourMarketAnalytics({FAQs,MetaTags,path,QuestionAnswer,TopBannerData,BannerData,NotesData,MarketProvides,LaborMarketTool,UseOFLaborMarket,FindLaborMarketData,Contact}) {
   return (
     <main>
+      <NextSEO MetaTags={MetaTags} QuestionAnswer={QuestionAnswer} path={path} />
       <Header data={TopBannerData} />
       <Banners data={BannerData} />
       <Notes data={NotesData} />
@@ -18,6 +21,7 @@ export default function LabourMarketAnalytics({TopBannerData,BannerData,NotesDat
       <MarketTools data={LaborMarketTool} />
       <MarketData data={UseOFLaborMarket} />
       <FindLaborData data={FindLaborMarketData} />
+      <FAQS data={FAQs} />
       <Banner data={Contact} />
     </main>
   );
@@ -46,7 +50,16 @@ export async function getStaticProps() {
         data: response.laborMarketAnalyticsPage.usesOfLaborMarketData.laborMarketDataCollection.items,
       },
       FindLaborMarketData: response.laborMarketAnalyticsPage.findLaborMarketData,
-      Contact: response.laborMarketAnalyticsPage.contactHorsefly
+      Contact: response.laborMarketAnalyticsPage.contactHorsefly,
+      MetaTags: {
+        title: response.laborMarketAnalyticsPage.metaTags.title,
+        data: response.laborMarketAnalyticsPage.metaTags.metaTagsCollection.items
+      },
+      QuestionAnswer: response.laborMarketAnalyticsPage.schemaQuestionAnswerCollection.items,
+      FAQs: {
+        title: response.laborMarketAnalyticsPage.faqsTitle,
+        data: response.laborMarketAnalyticsPage.faqsCollection.items,
+      }
     },
     revalidate: 5, 
   }

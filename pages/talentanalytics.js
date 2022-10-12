@@ -10,9 +10,11 @@ import Strategic from "../components/TalentAnalyticsComponents/Strategic";
 import Plateform from "../components/TalentAnalyticsComponents/Plateform";
 import FAQ from "../components/TalentAnalyticsComponents/FAQ";
 import Banner from "../components/LaborMarketAnalyticsComponents/Banner";
-export default function TalentAnalytics({TopBannerData,BlogsData,ToolsData,BannerData,WhocanBenefitsdata,BenefitsData,StratigicData,AnalyticsBannerData,FAQData,ContactData}) {
+import NextSEO from '../components/NextSEO';
+export default function TalentAnalytics({MetaTags,path,QuestionAnswer,TopBannerData,BlogsData,ToolsData,BannerData,WhocanBenefitsdata,BenefitsData,StratigicData,AnalyticsBannerData,FAQData,ContactData}) {
   return (
     <main>
+      <NextSEO MetaTags={MetaTags} QuestionAnswer={QuestionAnswer} path={path} />
       <Header data={TopBannerData} />
       <RPOBlogs data={BlogsData} />
       <AboutHorsefly data={ToolsData} />
@@ -55,9 +57,14 @@ export async function getStaticProps() {
       AnalyticsBannerData: response.talentAnalyticsPage.horseflyAnalyticsPlatformBanner,
       FAQData: {
         title: response.talentAnalyticsPage.faqTitle,
-        data: response.talentAnalyticsPage.faqsCollection.items
+        data: response.talentAnalyticsPage.faqsCollection.items,
       },
-      ContactData: response.talentAnalyticsPage.contactHorseflyBanner
+      ContactData: response.talentAnalyticsPage.contactHorseflyBanner,
+      MetaTags: {
+        title: response.talentAnalyticsPage.metaTags.title,
+        data: response.talentAnalyticsPage.metaTags.metaTagsCollection.items
+      },
+      QuestionAnswer: response.talentAnalyticsPage.schemaQuestionAnswerCollection.items
     },
     revalidate: 5, 
   }

@@ -8,10 +8,12 @@ import Features from "../components/RPOComponents/Features";
 import Info from "../components/RPOComponents/Info";
 import RPOBlogs from "../components/RPOComponents/RPOBlogs";
 import GetStartedHubspot from "../components/TalentAcquisitionComponents/GetStartedHubspot";
+import NextSEO from '../components/NextSEO';
 
-export default function RPOTalentAnalysis({TopHeader,ClientCards,BannerData,ExpertVoice,ToolsForRPO,InfoBanner,Blog,getStartedBanner}) {
+export default function RPOTalentAnalysis({MetaTags,path,QuestionAnswer,TopHeader,ClientCards,BannerData,ExpertVoice,ToolsForRPO,InfoBanner,Blog,getStartedBanner}) {
   return (
     <main>
+     <NextSEO MetaTags={MetaTags} QuestionAnswer={QuestionAnswer} path={path} />
       <Header data={TopHeader} />
       <ClientsCard data={ClientCards} />
       <RpoBannerData data={BannerData} />
@@ -47,7 +49,12 @@ export async function getStaticProps() {
       },
       InfoBanner: response.rpoRecruitmentPage.infoBanner,
       Blog: response.rpoRecruitmentPage.blogsCollection.items,
-      getStartedBanner: response.rpoRecruitmentPage.getStartedBanner
+      getStartedBanner: response.rpoRecruitmentPage.getStartedBanner,
+      MetaTags: {
+        title: response.rpoRecruitmentPage.metaTags.title,
+        data: response.rpoRecruitmentPage.metaTags.metaTagsCollection.items
+      },
+      QuestionAnswer: response.rpoRecruitmentPage.schemaQuestionAnswerCollection.items
       
     },
     revalidate: 5, 
